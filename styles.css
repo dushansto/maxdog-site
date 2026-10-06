@@ -163,11 +163,13 @@ h3 { letter-spacing: -.015em; }
 
 /* The two dogs from the logo, standing on a sky disc */
 .pack-stage { position: relative; width: min(540px, 100%); aspect-ratio: 1 / 1.02; margin: 0 auto; }
-.disc { position: absolute; left: 10%; right: 10%; bottom: 6%; aspect-ratio: 1; border-radius: 50%; background: var(--logo-sky); box-shadow: inset 0 -40px 80px -40px rgba(106,63,214,.28); }
-.ground { position: absolute; left: 16%; right: 14%; bottom: 4.5%; height: 7%; border-radius: 50%; background: radial-gradient(closest-side, rgba(20,28,79,.24), rgba(20,28,79,0)); }
-.dog { position: absolute; bottom: 7%; width: auto; max-width: none; }
-.dog-max { right: 14%; height: 86%; }
-.dog-luna { left: 12%; height: 56%; z-index: 1; }
+.disc { position: absolute; left: 9%; right: 11%; bottom: 6%; aspect-ratio: 1; border-radius: 50%; background: var(--logo-sky); box-shadow: inset 0 -40px 80px -40px rgba(106,63,214,.28); }
+.shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(20,28,79,.28), rgba(20,28,79,0)); }
+.shadow-max { left: 45%; width: 44%; bottom: 8.2%; height: 4%; }
+.shadow-luna { left: 5%; width: 42%; bottom: 1.6%; height: 4.6%; }
+.dog { position: absolute; width: auto; max-width: none; }
+.dog-max { right: 11%; bottom: 10%; height: 84%; }
+.dog-luna { left: 5%; bottom: 3.5%; height: 55%; z-index: 1; }
 
 .float { position: absolute; z-index: 2; text-align: left; display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 18px; font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--ink); }
 .float small { display: block; font-size: 11.5px; color: var(--ink-3); font-weight: 600; }
