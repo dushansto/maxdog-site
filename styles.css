@@ -1006,3 +1006,24 @@ body {
   .tabs-row.with-shots .tab-cap h3 { font-size: 19px; }
   .tabs-row.with-shots .tab-cap p { font-size: 14px; }
 }
+
+/* v7 motion: scroll reveal, hero entrance, medal shine, background drift */
+@keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .js section:not(.hero) { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js section:not(.hero).in { opacity: 1; transform: none; }
+  .hero .eyebrow, .hero h1, .hero .lede, .hero-cta { animation: riseIn .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero h1 { animation-delay: .08s; }
+  .hero .lede { animation-delay: .18s; }
+  .hero-cta { animation-delay: .28s; }
+  .hero-grid > :last-child { animation: riseIn 1.1s .25s cubic-bezier(.2,.7,.2,1) both; }
+  @media (min-width: 981px) {
+    .tab-card.reveal-card { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+    .tab-card.reveal-card.in { opacity: 1; transform: none; }
+  }
+  .mg-list li { position: relative; overflow: hidden; }
+  .mg-list li::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%); transform: translateX(-120%); }
+  .mg-list li:hover::after, .mg-list li:focus-within::after { transform: translateX(120%); transition: transform .9s ease; }
+  .cta { background-position: 0 calc(var(--py, 0) * -0.12px), 0 0; }
+  .app-stage { background-position: 0 calc(var(--py, 0) * -0.08px), 0 0; }
+}
