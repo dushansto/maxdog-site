@@ -468,5 +468,31 @@
     area.addEventListener('pointerleave', function () { tx = 0; ty = 0; scene.classList.remove('is-live'); kick(); });
   })();
   </script>
+  <script>
+  (function () {
+    var root = document.documentElement;
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (calm && calm.matches) { return; }
+    root.classList.add('js');
+    var sections = document.querySelectorAll('section:not(.hero)');
+    var cards = document.querySelectorAll('.tabs-row .tab-card');
+    cards.forEach(function (c, i) { c.classList.add('reveal-card'); c.style.setProperty('--d', (i * 140) + 'ms'); });
+    function show(el) { el.classList.add('in'); }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      sections.forEach(function (s) { io.observe(s); });
+      cards.forEach(function (c) { io.observe(c); });
+    } else {
+      sections.forEach(show);
+      cards.forEach(show);
+    }
+    var ticking = false;
+    function drift() { root.style.setProperty('--py', String(window.scrollY)); ticking = false; }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
+    drift();
+  })();
+  </script>
 </body>
 </html>
